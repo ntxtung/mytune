@@ -9,7 +9,7 @@ export default class BotNavigation extends Component {
     state = {
         playStatus: "PLAYING", 
         playbackBtnName: "pause",
-        url="https://aredir.nixcdn.com/NhacCuaTui976/MuonRuouToTinh-EmilyBigDaddy-5871420_hq.mp3?st=yxHQqsuBFqj-MUVgFMPRkw&e=1555395904&download=true"}
+        url: "https://aredir.nixcdn.com/NhacCuaTui976/MuonRuouToTinh-EmilyBigDaddy-5871420_hq.mp3?st=yxHQqsuBFqj-MUVgFMPRkw&e=1555395904&download=true"}
 
     changeStateToPlaying() {
         this.setState({playStatus: "PLAYING", playbackBtnName: "pause"})
