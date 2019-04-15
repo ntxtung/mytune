@@ -11,10 +11,16 @@ export default class BotNavigation extends Component {
         this.state = {
             playStatus: Sound.status.PAUSED,
             position: 0,
-            volume: 100,
-            playbackRate: 1,
+            volume: 50,
+            playbackRate: 1,            
+            currentSong: {
+                url: "https://aredir.nixcdn.com/NhacCuaTui976/MuonRuouToTinh-EmilyBigDaddy-5871420_hq.mp3?st=yxHQqsuBFqj-MUVgFMPRkw&e=1555395904&download=true",
+                bytesLoaded: 1,
+                bytesTotal: 1,
+                duration: 1
+            },
             loop: false,
-            url: "https://aredir.nixcdn.com/NhacCuaTui976/MuonRuouToTinh-EmilyBigDaddy-5871420_hq.mp3?st=yxHQqsuBFqj-MUVgFMPRkw&e=1555395904&download=true"
+            shuffle: false
         }
     }
     
@@ -23,23 +29,12 @@ export default class BotNavigation extends Component {
           case Sound.status.PLAYING:
             return 'pause';
           case Sound.status.PAUSED:
-            return 'playing';
+            return 'play';
           case Sound.status.STOPPED:
-            return 'playing';
+            return 'play';
           default:
             return 'x';
         }
-    }
-
-    handleSongPlaying = () => {
-        console.log(this.state.position)
-    }
-
-    handleSongLoading = () => {
-    }
-
-    handleSongFinishedPlaying = () => {
-        this.changeStateToPaused();
     }
 
     onPlaybackClicked = (e) => {
@@ -53,33 +48,73 @@ export default class BotNavigation extends Component {
     render() {
         return (
             <div>
-                <Sound url={this.state.url}
+                <Sound 
+                    url="https://aredir.nixcdn.com/NhacCuaTui976/MuonRuouToTinh-EmilyBigDaddy-5871420_hq.mp3?st=yxHQqsuBFqj-MUVgFMPRkw&e=1555395904&download=true"
                     playStatus={this.state.playStatus}
-                    onLoading={this.handleSongLoading}
-                    onPlaying={this.handleSongPlaying}
-                    onFinishedPlaying={this.handleSongFinishedPlaying}
+                    onLoading={({ bytesLoaded, bytesTotal, duration }) => {
+                        this.setState({currentSong: {
+                            bytesLoaded: bytesLoaded,
+                            bytesTotal: bytesTotal,
+                            duration: duration
+                        }});
+                    }}
+                    volume={this.state.volume}
+                    onPlaying={({ position }) => {
+                        this.setState({ position });
+                    }}
+                    onLoad={() => {
+                        console.log("Song Loaded!");
+                    }}
+                    onPause={() => {
+                        console.log("Song Paused!");
+                    }}
+                    onResume={() => {
+                        console.log("Song Resume!");
+                    }}
+                    onStop={() => {
+                        console.log("Song Stopped");
+                    }}
+                    onFinishedPlaying={() => {
+                        this.setState({ playStatus: Sound.status.STOPPED })
+                    }}
                     autoLoad="true"
-                    position={(pos) => this.setState({ position: pos })}
+                    loop={this.state.loop}
+                    playbackRate={this.state.playbackRate}
+                    position={this.state.position}
                 />
 
                 <Menu fixed="bottom" size="huge" widths="12">
-                    <Grid centered stretched fluid widths="12" style={{ width: "80%" }}>
+                    <Grid centered stretched fluid widths="12" style={{ width: "80%" }} >
                         <Grid.Row stretched>
+
                             <Grid.Column width={3} textAlign="center" stretched>
-                                <Button.Group>
+                                <Button.Group >
                                     <Button icon="step backward" />
                                     <Button icon={this.getStatusButtonText()} onClick={this.onPlaybackClicked} />
                                     <Button icon="step forward" />
-                                    <Button icon='shuffle' />
-                                    <Button icon='repeat' />
+                                    <Button icon='shuffle' 
+                                            color={this.state.shuffle === true ? "orange" : "white"}
+                                            onClick={() => {
+                                                this.setState({shuffle: !this.state.shuffle})
+                                            }}
+                                            />
+                                    <Button icon='repeat' 
+                                            color={this.state.loop === true ? "orange" : "white"}
+                                            onClick={() => {
+                                                this.setState({loop: !this.state.loop})
+                                            }}
+                                            />
                                 </Button.Group>
                             </Grid.Column>
+
                             <Grid.Column width={8} textAlign="left" verticalAlign="middle" stretched>
                                 <Label size="medium" >Hello World</Label>
                             </Grid.Column>
+
                             <Grid.Column width={4} textAlign="center" verticalAlign="middle" stretched>
                                 <Label size="medium">Hello World</Label>
                             </Grid.Column>
+
                         </Grid.Row>
                     </Grid>
                 </Menu>
