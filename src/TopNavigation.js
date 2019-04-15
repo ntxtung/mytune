@@ -17,11 +17,11 @@ export default class TopNavigation extends Component {
                         active={activeItem === 'editorials'}
                         onClick={this.handleItemClick}
                     >
-                        Editorials
+                        Logo Here
                     </Menu.Item>
 
                     <Menu.Item name='reviews' active={activeItem === 'reviews'} onClick={this.handleItemClick}>
-                        Reviews
+                        Homepage
                     </Menu.Item>
 
                     <Menu.Item
@@ -29,7 +29,7 @@ export default class TopNavigation extends Component {
                         active={activeItem === 'upcomingEvents'}
                         onClick={this.handleItemClick}
                     >
-                        Upcoming Events
+                        Bla
                     </Menu.Item>
                 </Menu>
             </div>
