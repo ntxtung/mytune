@@ -7,8 +7,8 @@ import Sound from 'react-sound';
 
 export default class BotNavigation extends Component {
     state = {
-        playStatus: "PLAYING", 
-        playbackBtnName: "pause",
+        playStatus: "PAUSED", 
+        playbackBtnName: "play",
         url: "https://aredir.nixcdn.com/NhacCuaTui976/MuonRuouToTinh-EmilyBigDaddy-5871420_hq.mp3?st=yxHQqsuBFqj-MUVgFMPRkw&e=1555395904&download=true"}
 
     changeStateToPlaying() {
