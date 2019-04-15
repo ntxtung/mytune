@@ -33,9 +33,9 @@ export default class BotNavigation extends Component {
 
     onPlaybackClicked = (e) => {
         if (this.state.playStatus === "PLAYING"){
-            this.changeStateToPlaying();
-        } else {
             this.changeStateToPaused();
+        } else {
+            this.changeStateToPlaying();
         }
     } 
 
