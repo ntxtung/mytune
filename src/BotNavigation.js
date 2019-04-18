@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css'
 
 import Sound from 'react-sound';
 import DemoSong from './DemoSong'
+import { white } from 'ansi-colors';
 
 
 export default class BotNavigation extends Component {
@@ -14,7 +15,7 @@ export default class BotNavigation extends Component {
             position: 0,
             volume: 50,
             playbackRate: 1,
-            loop: true,
+            loop: false,
             shuffle: false,
             autoLoad: true,
             currentSong: DemoSong[0],
@@ -125,8 +126,8 @@ export default class BotNavigation extends Component {
                     position={this.state.position}
                 />
 
-                <Menu fixed="bottom" size="huge" widths="12">
-                    <Grid centered stretched fluid widths="12" style={{ width: "80%" }} >
+                <Menu fixed="bottom" size="huge" widths="18">
+                    <Grid stackable centered stretched fluid widths="18" style={{ width: "90%" }} >
                         <Grid.Row stretched>
 
                             <Grid.Column width={3} textAlign="center" stretched>
@@ -166,12 +167,18 @@ export default class BotNavigation extends Component {
                                 </Button.Group>
                             </Grid.Column>
 
-                            <Grid.Column width={8} verticalAlign="middle" stretched>
-                                <Progress   id="Song-process"
+                            <Grid.Column width={1} verticalAlign="middle" stretched>
+                                <Label style={{backgroundColor: "rgba(255, 255, 255, 1.0)"}}>
+                                    {this.millisToMinutesAndSeconds(this.state.position)}
+                                </Label>
+                            </Grid.Column>
+
+                            <Grid.Column width={7} verticalAlign="middle" stretched>
+                                <Progress   active
+                                            id="Song-process"
                                             percent={(this.state.position / this.state.duration) * 100} 
                                             size="small" 
                                             color="orange"
-                                            label={this.millisToMinutesAndSeconds(this.state.position)}
                                             onClick={(e) => {
                                                 e.persist();
                                                 var offSetX = e.nativeEvent.offsetX;
@@ -182,7 +189,12 @@ export default class BotNavigation extends Component {
                                     {this.state.currentSong.title} - {this.state.currentSong.artist}
                                 </Progress>
 
+                            </Grid.Column>
 
+                            <Grid.Column width={1} verticalAlign="middle" stretched>
+                                <Label style={{backgroundColor: 'rgba(255, 255, 255, 1.0)'}}>
+                                    {this.millisToMinutesAndSeconds(this.state.duration)}
+                                </Label>
                             </Grid.Column>
 
                             <Grid.Column width={4} verticalAlign="middle" stretched>
