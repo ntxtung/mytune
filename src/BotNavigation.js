@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Menu, Button, Icon, Progress, Segment, Grid, Label, GridColumn, Item } from 'semantic-ui-react'
+import { Menu, Button, Progress, Grid, Label, Popup } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 import Sound from 'react-sound';
 import DemoSong from './DemoSong'
-import { white } from 'ansi-colors';
 
 
 export default class BotNavigation extends Component {
@@ -13,7 +12,7 @@ export default class BotNavigation extends Component {
         this.state = {
             playStatus: Sound.status.PAUSED,
             position: 0,
-            volume: 50,
+            volume: 100,
             playbackRate: 1,
             loop: false,
             shuffle: false,
@@ -21,7 +20,8 @@ export default class BotNavigation extends Component {
             currentSong: DemoSong[0],
             bytesLoaded: 0,
             bytesTotal: 0,
-            duration: 0
+            duration: 0,
+            muted: false
         }
     }
 
@@ -62,7 +62,6 @@ export default class BotNavigation extends Component {
                 position: 0
             })
         }
-
     }
 
     millisToMinutesAndSeconds = (millis) => {
@@ -97,6 +96,8 @@ export default class BotNavigation extends Component {
                             bytesTotal: bytesTotal,
                             duration: duration
                         })
+                        console.log("BytesLoaded: ", this.state.bytesLoaded);
+                        console.log("BytesTotal: ", this.state.bytesTotal)
                     }}
                     volume={this.state.volume}
                     onPlaying={({ position }) => {
@@ -104,6 +105,11 @@ export default class BotNavigation extends Component {
                     }}
                     onLoad={() => {
                         console.log("Song Loaded!");
+                        /*Stupid code*/
+                        this.setState({
+                            bytesLoaded: 1,
+                            bytesTotal: 1
+                        })
                     }}
                     onPause={() => {
                         console.log("Song Paused!");
@@ -124,6 +130,7 @@ export default class BotNavigation extends Component {
                     loop={this.state.loop}
                     playbackRate={this.state.playbackRate}
                     position={this.state.position}
+                    muted={this.state.muted}
                 />
 
                 <Menu fixed="bottom" size="huge" widths="18">
@@ -163,36 +170,77 @@ export default class BotNavigation extends Component {
                                             this.setState({ loop: !this.state.loop })
                                         }}
                                     />
+                                    <Popup
+                                        flowing hoverable
+                                        trigger={
+                                            <Button basic
+                                                icon={(this.state.muted === true && this.state.volume === 0 )? 'volume off' : this.state.volume > 50 ? 'volume up' : 'volume down'}
+                                                onClick={() => {
+                                                    this.setState({muted: !this.state.muted})
+                                                }}
+                                            />}
+                                        style={{
+                                            padding: 0
+                                        }}
+                                        >
+                                        <Progress   percent={this.state.volume}
+                                                    id="volume-control"
+                                                    size="small"
+                                                    color="orange"
+                                                    style={{
+                                                        width: 200,
+                                                        margin: 10
+                                                    }}
+                                                    onClick={(e) => {
+                                                        e.persist();
+                                                        var offSetX = e.nativeEvent.offsetX;
+                                                        var clientWidth = document.getElementById('volume-control').clientWidth;
+                                                        var fraction = (offSetX / clientWidth) * 100;
+                                                        this.setState({ volume: fraction })
+                                                    }}
+                                                    >
+
+                                        </Progress>
+                                    </Popup>
+
+
 
                                 </Button.Group>
                             </Grid.Column>
 
+                            <Grid.Row>
+
+                            </Grid.Row>
+
                             <Grid.Column width={1} verticalAlign="middle" stretched>
-                                <Label style={{backgroundColor: "rgba(255, 255, 255, 1.0)"}}>
+                                <Label style={{ 
+                                        backgroundColor: "rgba(255, 255, 255, 1.0)",
+                                    }}>
                                     {this.millisToMinutesAndSeconds(this.state.position)}
                                 </Label>
                             </Grid.Column>
 
                             <Grid.Column width={7} verticalAlign="middle" stretched>
-                                <Progress   active
-                                            id="Song-process"
-                                            percent={(this.state.position / this.state.duration) * 100} 
-                                            size="small" 
-                                            color="orange"
-                                            onClick={(e) => {
-                                                e.persist();
-                                                var offSetX = e.nativeEvent.offsetX;
-                                                var clientWidth = document.getElementById('Song-process').clientWidth;
-                                                var fraction = (offSetX / clientWidth) * this.state.duration;
-                                                this.setState({position: fraction})
-                                            }}>
+                                <Progress active
+                                    id="Song-process"
+                                    percent={(this.state.position / this.state.duration) * 100}
+                                    size="small"
+                                    color="orange"
+                                    onClick={(e) => {
+                                        e.persist();
+                                        var offSetX = e.nativeEvent.offsetX;
+                                        var clientWidth = document.getElementById('Song-process').clientWidth;
+                                        var fraction = (offSetX / clientWidth) * this.state.duration;
+                                        this.setState({ position: fraction })
+                                    }}>
+                                    <Progress percent={(this.state.bytesLoaded / this.state.bytesTotal) * 100} attached='top' />
                                     {this.state.currentSong.title} - {this.state.currentSong.artist}
                                 </Progress>
 
                             </Grid.Column>
 
                             <Grid.Column width={1} verticalAlign="middle" stretched>
-                                <Label style={{backgroundColor: 'rgba(255, 255, 255, 1.0)'}}>
+                                <Label style={{ backgroundColor: 'rgba(255, 255, 255, 1.0)' }}>
                                     {this.millisToMinutesAndSeconds(this.state.duration)}
                                 </Label>
                             </Grid.Column>
