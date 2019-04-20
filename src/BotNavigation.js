@@ -5,6 +5,8 @@ import 'semantic-ui-css/semantic.min.css'
 import Sound from 'react-sound';
 import DemoSong from './DemoSong'
 
+import PlayListController from './PlayListController'
+
 
 export default class BotNavigation extends Component {
     constructor(props) {
@@ -133,11 +135,11 @@ export default class BotNavigation extends Component {
                     muted={this.state.muted}
                 />
 
-                <Menu fixed="bottom" size="huge" widths="18">
+                <Menu fixed="bottom" size="tiny" widths="18">
                     <Grid stackable centered stretched fluid widths="18" style={{ width: "90%" }} >
                         <Grid.Row stretched>
 
-                            <Grid.Column width={3} textAlign="center" stretched>
+                            <Grid.Column width={3} textAlign="center">
                                 <Button.Group >
 
                                     <Button basic
@@ -208,11 +210,7 @@ export default class BotNavigation extends Component {
                                 </Button.Group>
                             </Grid.Column>
 
-                            <Grid.Row>
-
-                            </Grid.Row>
-
-                            <Grid.Column width={1} verticalAlign="middle" stretched>
+                            <Grid.Column width={1} stretched verticalAlign="middle">
                                 <Label style={{ 
                                         backgroundColor: "rgba(255, 255, 255, 1.0)",
                                     }}>
@@ -220,7 +218,7 @@ export default class BotNavigation extends Component {
                                 </Label>
                             </Grid.Column>
 
-                            <Grid.Column width={7} verticalAlign="middle" stretched>
+                            <Grid.Column width={7} stretched verticalAlign="middle">
                                 <Progress active
                                     id="Song-process"
                                     percent={(this.state.position / this.state.duration) * 100}
@@ -234,20 +232,21 @@ export default class BotNavigation extends Component {
                                         this.setState({ position: fraction })
                                     }}>
                                     <Progress percent={(this.state.bytesLoaded / this.state.bytesTotal) * 100} attached='top' />
-                                    {this.state.currentSong.title} - {this.state.currentSong.artist}
                                 </Progress>
 
                             </Grid.Column>
 
-                            <Grid.Column width={1} verticalAlign="middle" stretched>
+                            <Grid.Column width={1} stretched verticalAlign="middle">
                                 <Label style={{ backgroundColor: 'rgba(255, 255, 255, 1.0)' }}>
                                     {this.millisToMinutesAndSeconds(this.state.duration)}
                                 </Label>
                             </Grid.Column>
 
-                            <Grid.Column width={4} verticalAlign="middle" stretched>
+                            <Grid.Column width={4} fluid stretched>
 
-                                <Label size="medium">Hello World</Label>
+                                <PlayListController title={this.state.currentSong.title} 
+                                                    artist={this.state.currentSong.artist}
+                                                    img={this.state.currentSong.img}/>
 
                             </Grid.Column>
 
