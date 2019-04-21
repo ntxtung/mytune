@@ -39,6 +39,7 @@ export default class PlayerController extends Component {
                     </Grid.Column>
                     <Grid.Column width={12} fluid stretched verticalAlign="middle">
                                 <Progress active
+                                    
                                     id="Song-process"
                                     percent={(this.props.position / this.props.duration) * 100}
                                     size="small"

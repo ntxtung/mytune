@@ -103,7 +103,7 @@ export default class BotNavigation extends Component {
     }
 
     componentDidUpdate() {
-        console.log("Position / Duration: " , this.state.position, this.state.duration)
+        // console.log("Position / Duration: " , this.state.position, this.state.duration)
         if (this.state.position > this.state.duration - 200) {
             this.onFinishedPlaying()
         }

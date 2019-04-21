@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Icon, Grid, Image, Button } from 'semantic-ui-react'
+import PlaylistController from './PlaylistController'
 import 'semantic-ui-css/semantic.min.css'
 
 export default class SongDetail extends Component {
@@ -37,12 +38,10 @@ export default class SongDetail extends Component {
                                     <Icon name="like"
                                         color={this.props.currentSong.isLoved === true ? "orange" : "black"} />
                                 </Button>
-                                <Button basic
-                                    icon="list"
-                                    onClick={() => {
+                                <PlaylistController>
 
-                                    }}
-                                />
+                                </PlaylistController>
+
                             </Button.Group>
                         </Grid.Column>
                     </Grid.Row>
