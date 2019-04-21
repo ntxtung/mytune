@@ -3,11 +3,12 @@ import { Menu, Grid } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 import Sound from 'react-sound';
-import DemoSong from './DemoSong'
 
-import PlayListController from './PlayListController'
+import SongDetail from './SongDetail'
 import PlayerController from './PlayerController'
 import SoundSeeker from './SoundSeeker'
+
+import PlayList from './PlayList'
 
 
 export default class BotNavigation extends Component {
@@ -21,60 +22,64 @@ export default class BotNavigation extends Component {
             loop: false,
             shuffle: false,
             autoLoad: true,
-            currentSong: DemoSong[0],
             bytesLoaded: 0,
             bytesTotal: 0,
             duration: 0,
-            muted: false
+            muted: false,
+            currentSong: PlayList.getCurrentSong(),
         }
     }
 
+    onChangeSong = () => {
+        this.setState({
+            position: 0,
+            bytesLoaded: 0,
+            bytesTotal: 0,
+        })
+    }
+
     playPrevSong = () => {
-        if (this.state.loop === true) {
-            this.setState({
-                position: 0
-            })
+        if (this.state.position < 2000) {
+            this.setState({ currentSong: PlayList.stepBackward() })
+            this.onChangeSong()
         } else {
-            this.setState({
-                currentSong: DemoSong[0],
-                position: 0
-            })
+            this.setState({position: 0})
         }
-        console.log("Play Prev Song")
+
+    }
+
+    playNextSong = () => {
+        this.setState({ currentSong: PlayList.stepForward() })
+        this.onChangeSong()
     }
 
     triggerShuffle = () => {
         console.log("Trigger Shuffle")
+        this.setState({ shuffle: !this.state.shuffle })
     }
 
     triggerLoop = () => {
         console.log("Trigger Loop")
+        this.setState({ loop: !this.state.loop })
     }
 
     triggerMuted = () => {
         console.log("Trigger Muted")
+        this.setState({ muted: !this.state.muted })
     }
 
     setVolume = (newVolume) => {
-        this.setState({volume: newVolume})
+        this.setState({ volume: newVolume })
         console.log("Set Volume to " + newVolume)
     }
 
-    playNextSong = () => {
-        if (this.state.loop === true) {
-            this.setState({
-                position: 0
-            })
-        } else {
-            this.setState({
-                currentSong: DemoSong[1],
-                position: 0
-            })
-        }
-        console.log("Play Next Song")
+    playSong = () => {
+        this.setState({
+            playStatus: Sound.status.PLAYING
+        })
     }
 
-        pauseSong = () => {
+    pauseSong = () => {
         this.setState({
             playStatus: Sound.status.PAUSED
         })
@@ -82,14 +87,26 @@ export default class BotNavigation extends Component {
 
     onPlaybackClicked = (e) => {
         if (this.state.playStatus === Sound.status.PLAYING) {
-            this.setState({ playStatus: Sound.status.PAUSED });
+            this.pauseSong();
         } else {
-            this.setState({ playStatus: Sound.status.PLAYING });
+            this.playSong();
         }
     }
 
+    onFinishedPlaying = () => {
+        console.log("Finished Playing")
+        this.playNextSong()
+    }
+
     setPosition = (newPosition) => {
-        this.setState({position: newPosition})
+        this.setState({ position: newPosition })
+    }
+
+    componentDidUpdate() {
+        console.log("Position / Duration: " , this.state.position, this.state.duration)
+        if (this.state.position > this.state.duration - 200) {
+            this.onFinishedPlaying()
+        }
     }
 
     render() {
@@ -104,8 +121,8 @@ export default class BotNavigation extends Component {
                             bytesTotal: bytesTotal,
                             duration: duration
                         })
-                        console.log("BytesLoaded: ", this.state.bytesLoaded);
-                        console.log("BytesTotal: ", this.state.bytesTotal)
+                        // console.log("BytesLoaded: ", this.state.bytesLoaded);
+                        // console.log("BytesTotal: ", this.state.bytesTotal);
                     }}
                     volume={this.state.volume}
                     onPlaying={({ position }) => {
@@ -128,7 +145,7 @@ export default class BotNavigation extends Component {
                     onStop={() => {
                         console.log("Song Stopped");
                     }}
-                    onFinishedPlaying={this.playNextSong}
+                    onFinishedPlaying={() => this.onFinishedPlaying}
                     onError={(errorCode, description) => {
                         console.log(">> Errorrrr")
                         console.log("Error Code: " + errorCode)
@@ -142,42 +159,42 @@ export default class BotNavigation extends Component {
                 />
 
                 <Menu fixed="bottom" size="tiny" widths="18">
-                    <Grid stackable centered stretched fluid widths="18" style={{ width: "90%" }} >
+                    <Grid stackable centered stretched fluid widths="18" style={{ width: "70%" }} >
                         <Grid.Row stretched>
                             <Grid.Column width={3} textAlign="center">
-                                <PlayerController 
-                                    playStatus = {this.state.playStatus}
-                                    muted = {this.state.muted}
-                                    shuffle = {this.state.shuffle}
-                                    loop = {this.state.loop}
-                                    volume = {this.state.volume}
+                                <PlayerController
+                                    playStatus={this.state.playStatus}
+                                    muted={this.state.muted}
+                                    shuffle={this.state.shuffle}
+                                    loop={this.state.loop}
+                                    volume={this.state.volume}
 
 
-                                    playPrevSong = {this.playPrevSong}
-                                    playNextSong = {this.playNextSong}
-                                    onPlaybackClicked = {this.onPlaybackClicked}
-                                    triggerShuffle = {this.triggerShuffle}
-                                    triggerLoop = {this.triggerLoop}
-                                    triggerMuted = {this.triggerMuted}
-                                    setVolume = {this.setVolume}
+                                    playPrevSong={this.playPrevSong}
+                                    playNextSong={this.playNextSong}
+                                    onPlaybackClicked={this.onPlaybackClicked}
+                                    triggerShuffle={this.triggerShuffle}
+                                    triggerLoop={this.triggerLoop}
+                                    triggerMuted={this.triggerMuted}
+                                    setVolume={this.setVolume}
                                 />
                             </Grid.Column>
 
                             <Grid.Column width={9} stretched verticalAlign="middle">
                                 <SoundSeeker
-                                    position = {this.state.position}
-                                    duration = {this.state.duration}
-                                    setPosition = {this.setPosition}
-                                    bytesLoaded = {this.state.bytesLoaded}
-                                    bytesTotal = {this.state.bytesTotal}
+                                    position={this.state.position}
+                                    duration={this.state.duration}
+                                    setPosition={this.setPosition}
+                                    bytesLoaded={this.state.bytesLoaded}
+                                    bytesTotal={this.state.bytesTotal}
                                 />
                             </Grid.Column>
 
                             <Grid.Column width={4} fluid stretched>
 
-                                <PlayListController title={this.state.currentSong.title} 
-                                                    artist={this.state.currentSong.artist}
-                                                    img={this.state.currentSong.img}/>
+                                <SongDetail
+                                    currentSong={this.state.currentSong}
+                                />
 
                             </Grid.Column>
 

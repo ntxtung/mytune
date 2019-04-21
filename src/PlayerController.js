@@ -4,7 +4,6 @@ import Sound from 'react-sound'
 
 import 'semantic-ui-css/semantic.min.css'
 
-
 export default class PlayerController extends Component {
     constructor(props) {
         super(props);
@@ -75,9 +74,11 @@ export default class PlayerController extends Component {
                                     id="volume-control"
                                     size="small"
                                     color="orange"
+                                    progress='value'
+                                    value={Math.floor(this.props.volume)}
                                     style={{
                                         width: 200,
-                                        margin: 10
+                                        margin: 10,
                                     }}
                                     onClick={(e) => {
                                         e.persist();

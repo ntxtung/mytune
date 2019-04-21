@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import { Icon, Grid, Image, Label, Button } from 'semantic-ui-react'
+import { Icon, Grid, Image, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
-import DemoSong from './DemoSong'
 
-export default class PlayListController extends Component {
+export default class SongDetail extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // currentSong: DemoSong[0],
-            isLoved: false
         }
     }
 
@@ -18,31 +15,33 @@ export default class PlayListController extends Component {
                 <Grid fluid stackable>
                     <Grid.Row stretched fluid>
                         <Grid.Column fluid width={2} style={{ padding: 0 }}>
-                            <Image src={this.props.img}
+                            <Image src={this.props.currentSong.img}
                                 style={{
                                     width: 'auto',
                                     height: 'auto',
-                                    'max-width': '35px',
-                                    'max-height': '35px'
+                                    maxWidth: '35px',
+                                    maxHeight: '35px'
                                 }} />
                         </Grid.Column>
                         <Grid.Column fluid width={9} style={{ padding: 0 }}>
-                            <b>{this.props.title}</b>
-                            {this.props.artist}
+                            <b>{this.props.currentSong.title}</b>
+                            {this.props.currentSong.artist}
                         </Grid.Column>
                         <Grid.Column>
                             <Button.Group>
                                 <Button basic
                                     onClick={() => {
-                                        this.setState({ isLoved: !this.state.isLoved })
+                                        // this.setState({ isLoved: !this.props.currentSong.isLoved })
                                     }}
                                 >
                                     <Icon name="like"
-                                        color={this.state.isLoved === true ? "orange" : "black"} />
+                                        color={this.props.currentSong.isLoved === true ? "orange" : "black"} />
                                 </Button>
                                 <Button basic
                                     icon="list"
-                                // onClick={}
+                                    onClick={() => {
+
+                                    }}
                                 />
                             </Button.Group>
                         </Grid.Column>
