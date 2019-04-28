@@ -120,7 +120,7 @@ class BotNavigation extends Component {
     }
 
     render() {
-        if (!this.props.selectedSong){
+        if (this.props.selectedSong){
             return (
                 <div>                
                     <Sound
