@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 import { Button, Modal, Item, ButtonGroup } from 'semantic-ui-react'
-import Playlist from '../PlayList'
+import {connect} from 'react-redux'
+import {selectSong} from '../actions'
 import 'semantic-ui-css/semantic.min.css'
 
-export default class PlaylistController extends Component {
+class PlaylistController extends Component {
     constructor(props) {
         super(props)
         this.state = {
         }
     }
-
-
-
     render() {
-        const renderedPlaylist = Playlist.songs.map((song) => {
+        const renderedPlaylist = this.props.songs.map((song) => {
             return (
                 <Item >
                     <Item.Image size="tiny" src={song.img} />
@@ -33,7 +31,7 @@ export default class PlaylistController extends Component {
                                 />
                                 <Button icon="play" 
                                         onClick={() => {
-                                            
+                                            this.props.selectSong(song)
                                         }}
                                 />
                             </ButtonGroup>
@@ -58,3 +56,10 @@ export default class PlaylistController extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    // console.log(state);
+    return {songs: state.songs};
+}
+
+export default connect(mapStateToProps, {selectSong})(PlaylistController);
