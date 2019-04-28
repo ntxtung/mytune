@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Modal, Item, ButtonGroup } from 'semantic-ui-react'
-import Playlist from './PlayList'
+import Playlist from '../PlayList'
 import 'semantic-ui-css/semantic.min.css'
 
 export default class PlaylistController extends Component {

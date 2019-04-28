@@ -8,7 +8,7 @@ import SongDetail from './SongDetail'
 import PlayerController from './PlayerController'
 import SoundSeeker from './SoundSeeker'
 
-import PlayList from './PlayList'
+import PlayList from '../PlayList'
 
 
 export default class BotNavigation extends Component {
