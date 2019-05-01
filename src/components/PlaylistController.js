@@ -10,8 +10,10 @@ class PlaylistController extends Component {
         this.state = {
         }
     }
+
     render() {
         const renderedPlaylist = this.props.songs.map((song) => {
+            
             return (
                 <Item >
                     <Item.Image size="tiny" src={song.img} />
@@ -59,7 +61,7 @@ class PlaylistController extends Component {
 
 const mapStateToProps = (state) => {
     // console.log(state);
-    return {songs: state.songs};
+    return {songs: state.songs, selectedSong: state.selectedSong};
 }
 
 export default connect(mapStateToProps, {selectSong})(PlaylistController);
