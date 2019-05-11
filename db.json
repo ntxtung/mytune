@@ -1,0 +1,53 @@
+{
+    "user": [
+      {
+        "id": 1,
+        "name": "Tùng Nguyễn",
+        "playList" : [1, 3, 4],
+        "likedList" : [1, 2]
+      },
+      {
+        "id": 2,
+        "name": "Cơm Chiên",
+        "playList" : [2, 4],
+        "likedList" : [3, 4]
+      }
+    ],
+    "song": [
+        {
+            "id": 1,
+            "url": "https://data.chiasenhac.com/dataxx/25/downloads/2008/6/2007231-7d7ab9f2/320/Yeu%20Roi%20Day%20-%20Juky%20San_%20Helia.mp3",
+            "title": "Yêu rồi đấy",
+            "artist": "Juky San - Helia",
+            "img": "https://avatar-nct.nixcdn.com/song/2019/02/20/d/7/e/b/1550644691499_640.jpg"
+        },
+        {
+            "id": 2,
+            "url": "https://aredir.nixcdn.com/NhacCuaTui977/YeuEmDaiKhoCover-JukySan-5879908.mp3?st=o_gmbpuyNwppPOtVzhIg-Q&e=1557672481&download=true",
+            "title": "Yêu Em Dại Khờ",
+            "artist": "Juky San",
+            "img": "https://avatar-nct.nixcdn.com/song/2019/02/20/d/7/e/b/1550644691499_640.jpg"
+        },    
+        {
+            "id": 3,
+            "url": "https://data.chiasenhac.com/dataxx/35/downloads/1952/6/1951580-747f777f/320/Beertalks%202018%20Edit_%20-%20Ca%20Hoi%20Hoang.mp3",
+            "title": "Beertalks",
+            "artist": "Cá Hồi Hoang",
+            "img": "http://avatar.nct.nixcdn.com/singer/avatar/2017/11/15/6/3/7/1/1510721455037.jpg"
+        },
+        {
+            "id": 4,
+            "url": "https://data.chiasenhac.com/dataxx/00/downloads/1822/6/1821560-0eced838/320/I%20Like%20Me%20Better%20-%20Lauv.mp3",
+            "title": "I like me better",
+            "artist": "Lauv",
+            "img": "https://i1.sndcdn.com/artworks-000355509837-e1mdg8-t200x200.jpg"
+        },
+        {
+            "id": 5,
+            "url": "https://data.chiasenhac.com/dataxx/25/downloads/2000/6/1999211-23d9d4fa/320/Chuyen%20Cua%20Ta%20-%20Glee%20Gia%20Thieu.mp3",
+            "title": "Chuyện của ta",
+            "artist": "Glee Gia Thiều",
+            "img": "https://i1.sndcdn.com/artworks-000437493624-scd9p0-t200x200.jpg"
+        }
+    ]
+  }
