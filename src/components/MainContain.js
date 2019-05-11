@@ -1,19 +1,21 @@
-import React, { Component } from 'react'
-import { Button, Modal, Item, ButtonGroup } from 'semantic-ui-react'
+import React from 'react'
+import { Container, Item, Button, ButtonGroup } from 'semantic-ui-react'
+
 import {connect} from 'react-redux'
 import {selectSong} from '../actions'
-import 'semantic-ui-css/semantic.min.css'
 
-class PlaylistController extends Component {
-    constructor(props) {
+class MainContain extends React.Component {
+    constructor(props){
         super(props)
         this.state = {
+
         }
     }
 
     render() {
-        const renderedPlaylist = this.props.playlist.map((song) => {
-            
+        console.log("MainContainInRender: ", this.props.songs)
+        const renderedPlaylist = this.props.songs.map((song) => {           
+            console.log("MainContainLogSong: ", song) 
             return (
                 <Item >
                     <Item.Image size="tiny" src={song.img} />
@@ -28,7 +30,7 @@ class PlaylistController extends Component {
                             <ButtonGroup basic floated="right">
                                 <Button icon="like"
                                         onClick={() => {
-                                            song.isLoved = !song.isLoved
+                                            // song.isLoved = !song.isLoved
                                         }}
                                 />
                                 <Button icon="play" 
@@ -45,23 +47,21 @@ class PlaylistController extends Component {
 
         return (
             <div>
-                <Modal closeIcon dimmer="blurring" trigger={<Button basic icon="list" />}>
-                    <Modal.Header>Playlist</Modal.Header>
-                    <Modal.Content>
-                        <Item.Group divided>
+                <Container>
+                    <Item.Group divided>
                             {renderedPlaylist}
-                        </Item.Group>
-
-                    </Modal.Content>
-                </Modal>
+                    </Item.Group>
+                </Container>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
-    return {playlist: state.playlist, selectedSong: state.selectedSong};
+    console.log("MainContain: ", state);
+    return {
+        songs: state.songs
+    };
 }
 
-export default connect(mapStateToProps, {selectSong})(PlaylistController);
+export default connect(mapStateToProps, {selectSong})(MainContain)

@@ -170,7 +170,7 @@ class BotNavigation extends Component {
                         muted={this.state.muted}
                     />
     
-                    <Menu fixed="bottom" size="tiny" widths="18">
+                    <Menu fixed="bottom" size="tiny" widths="18" >
                         <Grid stackable centered stretched fluid widths="18" style={{ width: "70%" }} >
                             <Grid.Row stretched>
                                 <Grid.Column width={3} textAlign="center">
@@ -216,7 +216,10 @@ class BotNavigation extends Component {
                 </div>
             )
         } else {
-            return (<div></div>)
+            return (<div>
+                <Menu fixed="bottom" size="tiny" widths="18" >Please select song</Menu>
+                
+            </div>)
         }
         
     }
@@ -224,9 +227,11 @@ class BotNavigation extends Component {
 
 
 const mapStateToProps = (state) => {
-    console.log(state);
-    return {selectedSong: state.selectedSong,
-            songs: state.songs};
+    console.log("BotNavigation: ",state);
+    return {
+        selectedSong: state.selectedSong,
+        songs: state.songs
+    };
 }
 
 export default connect(mapStateToProps, {selectSong})(BotNavigation)

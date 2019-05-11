@@ -1,5 +1,5 @@
 {
-    "user": [
+    "users": [
       {
         "id": 1,
         "name": "Tùng Nguyễn",
@@ -13,7 +13,7 @@
         "likedList" : [3, 4]
       }
     ],
-    "song": [
+    "songs": [
         {
             "id": 1,
             "url": "https://data.chiasenhac.com/dataxx/25/downloads/2008/6/2007231-7d7ab9f2/320/Yeu%20Roi%20Day%20-%20Juky%20San_%20Helia.mp3",
