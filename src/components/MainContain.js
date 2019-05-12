@@ -13,9 +13,7 @@ class MainContain extends React.Component {
     }
 
     render() {
-        console.log("MainContainInRender: ", this.props.songs)
-        const renderedPlaylist = this.props.songs.map((song) => {           
-            console.log("MainContainLogSong: ", song) 
+        const renderedPlaylist = this.props.songs.map((song) => {     
             return (
                 <Item key={song.id}>
                     <Item.Image size="tiny" src={song.img} />
@@ -47,7 +45,7 @@ class MainContain extends React.Component {
 
         return (
             <div>
-                <Container>
+                <Container style={{marginTop: '4em'}}>
                     <Item.Group divided>
                             {renderedPlaylist}
                     </Item.Group>

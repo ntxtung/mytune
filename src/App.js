@@ -20,8 +20,8 @@ class App extends Component {
   render() {
     return (
       <div>        
-        {/* <TopNavigation /> */}
-        <MainContain />
+        <TopNavigation />
+        <MainContain/>
         <BotNavigation />
       </div>
     );

@@ -219,10 +219,7 @@ class BotNavigation extends Component {
                 </div>
             )
         } else {
-            return (<div>
-                <Menu fixed="bottom" size="tiny">Please select song</Menu>
-                
-            </div>)
+            return (<div></div>)
         }
         
     }
