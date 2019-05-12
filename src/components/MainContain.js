@@ -45,7 +45,7 @@ class MainContain extends React.Component {
 
         return (
             <div>
-                <Container style={{marginTop: '4em'}}>
+                <Container style={{marginTop: '6em'}}>
                     <Item.Group divided>
                             {renderedPlaylist}
                     </Item.Group>

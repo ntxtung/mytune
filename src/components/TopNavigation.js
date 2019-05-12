@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react'
+import { Menu, Container, Image } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
-export default class TopNavigation extends Component {
+import {connect} from 'react-redux'
+import {} from '../actions'
+
+class TopNavigation extends Component {
     state = {}
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
     render() {
-        const { activeItem } = this.state
+        
         return (
             <div>
-                <Menu fixed="top" size="large">
-                    <Menu.Item
-                        name='editorials'
-                        active={activeItem === 'editorials'}
-                        onClick={this.handleItemClick}
-                    >
-                        Logo Here
-                    </Menu.Item>
-
-                    <Menu.Item name='reviews' active={activeItem === 'reviews'} onClick={this.handleItemClick}>
-                        Homepage
-                    </Menu.Item>
-
-                    <Menu.Item
-                        name='upcomingEvents'
-                        active={activeItem === 'upcomingEvents'}
-                        onClick={this.handleItemClick}
-                    >
-                        Bla
-                    </Menu.Item>
+                <Menu fixed="top" size="medium" inverted>
+                    <Container>
+                        <Menu.Item
+                            as='a'
+                            header
+                            name='editorials'
+                        >
+                            <Image size='mini' src={process.env.PUBLIC_URL+'/256.png'} style={{ marginRight: '1.5em' }} />
+                            My Tune
+                        </Menu.Item>
+                        <Menu.Menu position='right'>
+                            <Menu.Item>
+                                Hello
+                            </Menu.Item>
+                        </Menu.Menu>
+                    </Container>                    
                 </Menu>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    };
+}
+
+export default connect(mapStateToProps, {})(TopNavigation)
