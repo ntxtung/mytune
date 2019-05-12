@@ -24,7 +24,7 @@ export default class SongDetail extends Component {
                                     maxHeight: '35px'
                                 }} />
                         </Grid.Column>
-                        <Grid.Column fluid width={9} style={{ padding: 0 }}>
+                        <Grid.Column fluid width={9} style={{ padding: 0, marginLeft: 5 }}>
                             <b>{this.props.currentSong.title}</b>
                             {this.props.currentSong.artist}
                         </Grid.Column>

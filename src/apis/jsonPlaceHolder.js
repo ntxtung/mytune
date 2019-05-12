@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: 'https://my-json-server.typicode.com/ntxtung/mytune'
+    baseURL: 'https://my-json-server.typicode.com/ntxtung/mytune-db'
 })

@@ -13,6 +13,8 @@ class App extends Component {
       this.props.fetchSongs(2);
       this.props.fetchSongs(3);
       this.props.fetchSongs(4);
+      this.props.fetchSongs(5);
+      this.props.fetchSongs(6);
   }
 
   render() {

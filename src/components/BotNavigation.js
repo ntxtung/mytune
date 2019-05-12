@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Grid } from 'semantic-ui-react'
+import { Menu, Grid, Container } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 import Sound from 'react-sound';
@@ -15,7 +15,7 @@ class BotNavigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            playStatus: Sound.status.PAUSED,
+            playStatus: Sound.status.PLAYING,
             position: 0,
             volume: 100,
             playbackRate: 1,
@@ -38,25 +38,25 @@ class BotNavigation extends Component {
     }
 
     playPrevSong = () => {
-        var currentIndex = this.props.songs.indexOf(this.props.selectedSong)
+        var currentIndex = this.props.playlist.indexOf(this.props.selectedSong)
         if (this.state.position < 2000){
             this.setState({position: 0})
         } else {
             if (currentIndex === 0) {
                 this.setState({position: 0, playStatus: Sound.status.PAUSED})
             } else {
-                this.props.selectSong(this.props.songs[currentIndex-1])
+                this.props.selectSong(this.props.playlist[currentIndex-1])
             }
         }
     }
 
     playNextSong = () => {
-        var currentIndex = this.props.songs.indexOf(this.props.selectedSong)
-        if (currentIndex === this.props.songs.length-1){
-            this.props.selectSong(this.props.songs[0])
+        var currentIndex = this.props.playlist.indexOf(this.props.selectedSong)
+        if (currentIndex === this.props.playlist.length-1){
+            this.props.selectSong(this.props.playlist[0])
             this.setState({playStatus: Sound.status.PAUSED})
         } else {
-            this.props.selectSong(this.props.songs[currentIndex+1])
+            this.props.selectSong(this.props.playlist[currentIndex+1])
         }
     }
 
@@ -171,47 +171,50 @@ class BotNavigation extends Component {
                     />
     
                     <Menu fixed="bottom" size="tiny" widths="18" >
-                        <Grid stackable centered stretched fluid widths="18" style={{ width: "70%" }} >
-                            <Grid.Row stretched>
-                                <Grid.Column width={3} textAlign="center">
-                                    <PlayerController
-                                        playStatus={this.state.playStatus}
-                                        muted={this.state.muted}
-                                        shuffle={this.state.shuffle}
-                                        loop={this.state.loop}
-                                        volume={this.state.volume}
-    
-    
-                                        playPrevSong={this.playPrevSong}
-                                        playNextSong={this.playNextSong}
-                                        onPlaybackClicked={this.onPlaybackClicked}
-                                        triggerShuffle={this.triggerShuffle}
-                                        triggerLoop={this.triggerLoop}
-                                        triggerMuted={this.triggerMuted}
-                                        setVolume={this.setVolume}
-                                    />
-                                </Grid.Column>
-    
-                                <Grid.Column width={9} stretched verticalAlign="middle">
-                                    <SoundSeeker
-                                        position={this.state.position}
-                                        duration={this.state.duration}
-                                        setPosition={this.setPosition}
-                                        bytesLoaded={this.state.bytesLoaded}
-                                        bytesTotal={this.state.bytesTotal}
-                                    />
-                                </Grid.Column>
-    
-                                <Grid.Column width={4} fluid stretched>
-    
-                                    <SongDetail
-                                        currentSong={this.props.selectedSong}
-                                    />
-    
-                                </Grid.Column>
-    
-                            </Grid.Row>
-                        </Grid>
+                        <Container>
+                            <Grid stackable centered stretched widths="18" style={{width: "100%"}}>
+                                <Grid.Row stretched>
+                                    <Grid.Column width={3} textAlign="center">
+                                        <PlayerController
+                                            playStatus={this.state.playStatus}
+                                            muted={this.state.muted}
+                                            shuffle={this.state.shuffle}
+                                            loop={this.state.loop}
+                                            volume={this.state.volume}
+        
+        
+                                            playPrevSong={this.playPrevSong}
+                                            playNextSong={this.playNextSong}
+                                            onPlaybackClicked={this.onPlaybackClicked}
+                                            triggerShuffle={this.triggerShuffle}
+                                            triggerLoop={this.triggerLoop}
+                                            triggerMuted={this.triggerMuted}
+                                            setVolume={this.setVolume}
+                                        />
+                                    </Grid.Column>
+        
+                                    <Grid.Column width={9} stretched verticalAlign="middle">
+                                        <SoundSeeker
+                                            position={this.state.position}
+                                            duration={this.state.duration}
+                                            setPosition={this.setPosition}
+                                            bytesLoaded={this.state.bytesLoaded}
+                                            bytesTotal={this.state.bytesTotal}
+                                        />
+                                    </Grid.Column>
+        
+                                    <Grid.Column width={4} fluid stretched>
+        
+                                        <SongDetail
+                                            currentSong={this.props.selectedSong}
+                                        />
+        
+                                    </Grid.Column>
+        
+                                </Grid.Row>
+                            </Grid>
+                        </Container>
+                        
                     </Menu>
                 </div>
             )
@@ -230,7 +233,7 @@ const mapStateToProps = (state) => {
     console.log("BotNavigation: ",state);
     return {
         selectedSong: state.selectedSong,
-        songs: state.songs
+        playlist: state.playlist
     };
 }
 
