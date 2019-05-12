@@ -170,9 +170,9 @@ class BotNavigation extends Component {
                         muted={this.state.muted}
                     />
     
-                    <Menu fixed="bottom" size="tiny" widths="18" >
+                    <Menu compact fixed="bottom" size="tiny" widths="16" >
                         <Container>
-                            <Grid stackable centered stretched widths="18" style={{width: "100%"}}>
+                            <Grid stackable centered stretched widths="16" style={{width: "100%"}}>
                                 <Grid.Row stretched>
                                     <Grid.Column width={3} textAlign="center">
                                         <PlayerController
@@ -203,7 +203,7 @@ class BotNavigation extends Component {
                                         />
                                     </Grid.Column>
         
-                                    <Grid.Column width={4} fluid stretched>
+                                    <Grid.Column width={4} stretched>
         
                                         <SongDetail
                                             currentSong={this.props.selectedSong}
@@ -220,7 +220,7 @@ class BotNavigation extends Component {
             )
         } else {
             return (<div>
-                <Menu fixed="bottom" size="tiny" widths="18" >Please select song</Menu>
+                <Menu fixed="bottom" size="tiny">Please select song</Menu>
                 
             </div>)
         }

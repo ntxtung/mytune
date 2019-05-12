@@ -22,11 +22,11 @@ export default class PlayerController extends Component {
         
         return (
             <div>
-                <Grid stackable centered stretched fluid widths="18"
+                <Grid stackable centered stretched widths="18"
                     style={{
                         padding: 0
                     }}>
-                    <Grid.Column width={2} fluid stretched verticalAlign="middle"
+                    <Grid.Column width={2} stretched verticalAlign="middle"
                             style={{
                                 padding: 0
                             }}>
@@ -37,7 +37,7 @@ export default class PlayerController extends Component {
                             {this.millisToMinutesAndSeconds(this.props.position)}
                         </Label>
                     </Grid.Column>
-                    <Grid.Column width={12} fluid stretched verticalAlign="middle">
+                    <Grid.Column width={12} stretched verticalAlign="middle">
                                 <Progress active
                                     
                                     id="Song-process"
@@ -59,7 +59,7 @@ export default class PlayerController extends Component {
                                 </Progress>
 
                             </Grid.Column>
-                    <Grid.Column width={2} fluid stretched verticalAlign="middle" 
+                    <Grid.Column width={2} stretched verticalAlign="middle" 
                         style={{
                             padding: 0
                         }}>

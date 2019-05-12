@@ -17,7 +17,7 @@ class MainContain extends React.Component {
         const renderedPlaylist = this.props.songs.map((song) => {           
             console.log("MainContainLogSong: ", song) 
             return (
-                <Item >
+                <Item key={song.id}>
                     <Item.Image size="tiny" src={song.img} />
                     <Item.Content>
                         <Item.Header>

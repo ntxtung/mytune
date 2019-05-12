@@ -15,7 +15,7 @@ class PlaylistController extends Component {
         const renderedPlaylist = this.props.playlist.map((song) => {
             
             return (
-                <Item >
+                <Item key={song.id} >
                     <Item.Image size="tiny" src={song.img} />
                     <Item.Content>
                         <Item.Header>
@@ -45,7 +45,12 @@ class PlaylistController extends Component {
 
         return (
             <div>
-                <Modal closeIcon dimmer="blurring" trigger={<Button basic icon="list" />}>
+                <Modal closeIcon dimmer="blurring" trigger={<Button basic icon="list" />}
+                    style={{
+                        display: "none",
+                        position: "fixed",
+                        overflow: "auto"
+                    }}>
                     <Modal.Header>Playlist</Modal.Header>
                     <Modal.Content>
                         <Item.Group divided>

@@ -28,7 +28,7 @@ export default class PlayerController extends Component {
     render() {
         return (
             <div>
-                <Grid stackable centered stretched fluid>
+                <Grid stackable centered stretched>
                     <Grid.Column>
                         <Button.Group >
 
@@ -48,14 +48,8 @@ export default class PlayerController extends Component {
                             />
 
                             <Button basic
-                                icon='shuffle'
-                                color={this.props.shuffle === true ? "orange" : "white"}
-                                onClick={() => this.props.triggerShuffle()}
-                            />
-
-                            <Button basic
                                 icon='repeat'
-                                color={this.props.loop === true ? "orange" : "white"}
+                                color={this.props.loop === true ? "orange" : null}
                                 onClick={() => this.props.triggerLoop()}
                             />
                             <Popup
@@ -70,7 +64,8 @@ export default class PlayerController extends Component {
                                     padding: 0
                                 }}
                             >
-                                <Progress percent={this.props.volume}
+                                <Progress 
+                                    // percent={this.props.volume}
                                     id="volume-control"
                                     size="small"
                                     color="orange"

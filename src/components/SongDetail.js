@@ -13,9 +13,9 @@ export default class SongDetail extends Component {
     render() {
         return (
             <div style={{ justifyContent: 'left' }}>
-                <Grid fluid stackable>
-                    <Grid.Row stretched fluid>
-                        <Grid.Column fluid width={2} style={{ padding: 0 }}>
+                <Grid stackable>
+                    <Grid.Row stretched>
+                        <Grid.Column width={2} style={{ padding: 0 }}>
                             <Image src={this.props.currentSong.img}
                                 style={{
                                     width: 'auto',
@@ -24,7 +24,7 @@ export default class SongDetail extends Component {
                                     maxHeight: '35px'
                                 }} />
                         </Grid.Column>
-                        <Grid.Column fluid width={9} style={{ padding: 0, marginLeft: 5 }}>
+                        <Grid.Column width={9} style={{ padding: 0, marginLeft: 5 }}>
                             <b>{this.props.currentSong.title}</b>
                             {this.props.currentSong.artist}
                         </Grid.Column>
