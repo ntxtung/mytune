@@ -16,42 +16,42 @@
     "songs": [
         {
             "id": 1,
-            "url": "https://vnso-zn-5-tf-mp3-s1-zmp3.zadn.vn/c5e690acbfeb56b50ffa/1964952782194422174?authen=exp=1557716244~acl=/c5e690acbfeb56b50ffa/*~hmac=842be2da3e593977756e072defd83df1",
+            "url": "https://data.chiasenhac.com/dataxx/25/downloads/2008/2/2007231-7d7ab9f2/320/Yeu%20Roi%20Day%20-%20Juky%20San_%20Helia.mp3",
             "title": "Yêu rồi đấy",
             "artist": "Juky San - Helia",
             "img": "https://avatar-nct.nixcdn.com/song/2019/02/20/d/7/e/b/1550644691499_640.jpg"
         },
         {
             "id": 2,
-            "url": "https://vnso-zn-5-tf-mp3-s1-zmp3.zadn.vn/23bc358601c1e89fb1d0/199971842924510548?authen=exp=1557718630~acl=/23bc358601c1e89fb1d0/*~hmac=9a46d2c832dea2739c13c069aea8b8bc&filename=Yeu-Em-Dai-Kho-Cover-Juky-San.mp3",
+            "url": "https://data.chiasenhac.com/dataxx/25/downloads/2001/2/2000973-fd50c362/320/Yeu%20Em%20Dai%20Kho%20-%20Juky%20San.mp3",
             "title": "Yêu Em Dại Khờ",
             "artist": "Juky San",
             "img": "https://avatar-nct.nixcdn.com/song/2019/02/20/d/7/e/b/1550644691499_640.jpg"
         },    
         {
             "id": 3,
-            "url": "https://data.chiasenhac.com/dataxx/32/downloads/1922/0/1921146-65ab54b9/128/Beertalks%20-%20Ca%20Hoi%20Hoang.mp3",
+            "url": "https://data.chiasenhac.com/dataxx/32/downloads/1922/2/1921146-65ab54b9/320/Beertalks%20-%20Ca%20Hoi%20Hoang.mp3",
             "title": "Beertalks",
             "artist": "Cá Hồi Hoang",
             "img": "http://avatar.nct.nixcdn.com/singer/avatar/2017/11/15/6/3/7/1/1510721455037.jpg"
         },
         {
             "id": 4,
-            "url": "https://data.chiasenhac.com/dataxx/00/downloads/1822/0/1821560-0eced838/128/I%20Like%20Me%20Better%20-%20Lauv.mp3",
+            "url": "https://data.chiasenhac.com/dataxx/00/downloads/1822/2/1821560-0eced838/320/I%20Like%20Me%20Better%20-%20Lauv.mp3",
             "title": "I like me better",
             "artist": "Lauv",
             "img": "https://i1.sndcdn.com/artworks-000355509837-e1mdg8-t200x200.jpg"
         },
         {
             "id": 5,
-            "url": "https://data.chiasenhac.com/dataxx/25/downloads/2000/0/1999211-23d9d4fa/128/Chuyen%20Cua%20Ta%20-%20Glee%20Gia%20Thieu.mp3",
+            "url": "https://data.chiasenhac.com/dataxx/25/downloads/2000/2/1999211-23d9d4fa/320/Chuyen%20Cua%20Ta%20-%20Glee%20Gia%20Thieu.mp3",
             "title": "Chuyện của ta",
             "artist": "Glee Gia Thiều",
             "img": "https://i1.sndcdn.com/artworks-000437493624-scd9p0-t200x200.jpg"
         },
         {
             "id": 6,
-            "url": "https://r4---sn-42u-8ube.googlevideo.com/videoplayback?expire=1557653476&ei=g5PXXIKCO_WAs8IPhoOsmA8&ip=103.234.36.66&id=o-ANHpLIUKKUiK2mfbqukqUKWgfUukOLIPnX7rPZcODtKG&itag=140&source=youtube&requiressl=yes&mm=31,29&mn=sn-42u-8ube,sn-42u-nboed&ms=au,rdu&mv=u&pl=24&pcm2=no&mime=audio/mp4&gir=yes&clen=4279482&dur=264.382&lmt=1557079830162755&mt=1557631036&fvip=4&keepalive=yes&c=WEB&txp=5531432&sparams=expire,ei,ip,id,itag,source,requiressl,pcm2,mime,gir,clen,dur,lmt&sig=ALgxI2wwRQIhAKzfOh8EBreekojL14TQaml0lqLG3RP5uOD6a_c7fzFcAiAyhJZWw0pr0RLZEDGwC5NObbJq-PplGnpvkbwBkrHbOg==&lsparams=mm,mn,ms,mv,pl&lsig=AHylml4wRQIhALnGqp2KXymZPWcRXIIBojQQhTdm9LCx1wtCi4y6eaJXAiAhyOwbGdH7wQ4WqQx0I8jL3Dvp0YIUH-8Xt7n9yazs_A==",
+            "url": "https://data.chiasenhac.com/downloads/2011/2/2010290-859e0f80/320/5AM%20-%20Ca%20Hoi%20Hoang.mp3",
             "title": "5AM",
             "artist": "Cá Hồi Hoang",
             "img": "http://avatar.nct.nixcdn.com/singer/avatar/2017/11/15/6/3/7/1/1510721455037.jpg"
