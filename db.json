@@ -3,12 +3,14 @@
       {
         "id": 1,
         "name": "Tùng Nguyễn",
+        "avatar" : "https://avatars3.githubusercontent.com/u/29829566?s=460&v=4",
         "playList" : [1, 3, 4],
         "likedList" : [1, 2]
       },
       {
         "id": 2,
         "name": "Cơm Chiên",
+        "avatar": "https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.0-9/46084903_2728286324063300_4180692930811396096_n.jpg?_nc_cat=111&_nc_oc=AQlrpKrCZTevoykgv6U5WAfCk7ZATkTO-zwfouv1smOS3ngWKFp14MMjy9Vo2BjynuM&_nc_ht=scontent.fsgn5-3.fna&oh=6bc8aec2ade0751460371a3935e3f2a9&oe=5D705A47",
         "playList" : [2, 4],
         "likedList" : [3, 4]
       }
