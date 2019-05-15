@@ -49,7 +49,7 @@ class TopNavigation extends Component {
                 <Menu fixed="top" size="small" inverted>
                     <Container>
                         <Menu.Item as='a' header>
-                            <Image size='mini' src={process.env.PUBLIC_URL + '/256.png'} style={{ marginRight: '1.5em' }} />
+                            <Image size='mini' src={process.env.PUBLIC_URL + '/image/256.png'} style={{ marginRight: '1.5em' }} />
                             My Tune
                         </Menu.Item>
                         <Menu.Item > 
