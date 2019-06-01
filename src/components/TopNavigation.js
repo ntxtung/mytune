@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Container, Image, Button, Item, Icon, Dropdown, Search, Modal } from 'semantic-ui-react'
+import { Menu, Container, Image, Button, Item, Dropdown, Search, Modal } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 import { connect } from 'react-redux'

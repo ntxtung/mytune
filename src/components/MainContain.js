@@ -1,12 +1,12 @@
 import React from 'react'
-import { Container, Item, Button, ButtonGroup, Dimmer } from 'semantic-ui-react'
+import { Container, Item, Button, ButtonGroup, Placeholder } from 'semantic-ui-react'
 
-import {connect} from 'react-redux'
-import {selectSong} from '../actions'
+import { connect } from 'react-redux'
+import { selectSong } from '../actions'
 
 
 class MainContain extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
 
@@ -14,11 +14,24 @@ class MainContain extends React.Component {
     }
 
     render() {
-        const renderedPlaylist = this.props.songs.map((song) => {   
-            console.log(song)  
+        const renderPlaceHolder = (
+            <Placeholder fluid>
+                {Array.from({ length: 10 }, (item, index) => {
+                    return (
+                        <Placeholder.Header key={index}  image>
+                            <Placeholder.Line length="full" />
+                            <Placeholder.Line length="full" />
+                            <Placeholder.Line length="full" />
+                        </Placeholder.Header>
+                    )
+                })}
+            </Placeholder>
+        )
+
+        const renderedPlaylist = this.props.songs.map((song) => {
             return (
                 <Item key={song._id}>
-                    <Item.Image wrapped size="tiny" src={song.image === null ? 'https://www.upsieutoc.com/images/2019/05/31/defaultImg.png' : song.image} />
+                    <Item.Image wrapped size="tiny" src={song.image === null ? process.env.PUBLIC_URL + '/temp/defaultImg2.png' : song.image} />
                     <Item.Content>
                         <Item.Header>
                             {song.title}
@@ -29,14 +42,14 @@ class MainContain extends React.Component {
                         <Item.Description>
                             <ButtonGroup basic floated="right">
                                 <Button icon="like"
-                                        onClick={() => {
-                                            // song.isLoved = !song.isLoved
-                                        }}
+                                    onClick={() => {
+                                        // song.isLoved = !song.isLoved
+                                    }}
                                 />
-                                <Button icon="play" 
-                                        onClick={() => {
-                                            this.props.selectSong(song)
-                                        }}
+                                <Button icon="play"
+                                    onClick={() => {
+                                        this.props.selectSong(song)
+                                    }}
                                 />
                             </ButtonGroup>
                         </Item.Description>
@@ -47,9 +60,10 @@ class MainContain extends React.Component {
 
         return (
             <div>
-                <Container style={{marginTop: '6em'}}>
+                <Container style={{ marginTop: '6em' }}>
                     <Item.Group divided>
-                            {renderedPlaylist}
+                        {this.props.songs.length > 0 ? renderedPlaylist : renderPlaceHolder}
+                        {/* {renderPlaceHolder} */}
                     </Item.Group>
                 </Container>
             </div>
@@ -64,4 +78,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, {selectSong})(MainContain)
+export default connect(mapStateToProps, { selectSong })(MainContain)

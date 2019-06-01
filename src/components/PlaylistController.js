@@ -16,7 +16,7 @@ class PlaylistController extends Component {
             
             return (
                 <Item key={song._id} >
-                    <Item.Image wrapped size="tiny" src={song.image === null ? 'https://www.upsieutoc.com/images/2019/05/31/defaultImg.png' : song.image} />
+                    <Item.Image wrapped size="tiny" src={song.image === null ? process.env.PUBLIC_URL+'/temp/defaultImg2.png' : song.image} />
                     <Item.Content>
                         <Item.Header>
                             {song.title}
