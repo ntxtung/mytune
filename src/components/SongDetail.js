@@ -16,7 +16,7 @@ export default class SongDetail extends Component {
                 <Grid stackable>
                     <Grid.Row stretched>
                         <Grid.Column width={2} style={{ padding: 0 }}>
-                            <Image src={this.props.currentSong.image === null ? process.env.PUBLIC_URL+'/temp/defaultImg2.png' : this.props.currentSong.image}
+                            <Image src={this.props.currentSong.imageUrl.length === 0 ? process.env.PUBLIC_URL+'/temp/defaultImg2.png' : this.props.currentSong.imageUrl}
                                 style={{
                                     width: 'auto',
                                     height: 'auto',

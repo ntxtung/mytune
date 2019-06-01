@@ -31,7 +31,7 @@ class MainContain extends React.Component {
         const renderedPlaylist = this.props.songs.map((song) => {
             return (
                 <Item key={song._id}>
-                    <Item.Image wrapped size="tiny" src={song.image === null ? process.env.PUBLIC_URL + '/temp/defaultImg2.png' : song.image} />
+                    <Item.Image wrapped size="tiny" src={song.imageUrl.length === 0 ? process.env.PUBLIC_URL + '/temp/defaultImg2.png' : song.imageUrl} />
                     <Item.Content>
                         <Item.Header>
                             {song.title}
