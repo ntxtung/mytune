@@ -32,8 +32,12 @@ class MainContain extends React.Component {
             return (
                 <Item key={song._id}>
                     <Item.Image wrapped size="tiny" src={song.imageUrl.length === 0 ? process.env.PUBLIC_URL + '/temp/defaultImg2.png' : song.imageUrl} />
+                    
                     <Item.Content>
-                        <Item.Header>
+                        <Item.Header as="a" onClick={(e) => {
+                                e.preventDefault()
+                                this.props.selectSong(song)
+                            }}>
                             {song.title}
                         </Item.Header>
                         <Item.Meta>
@@ -62,6 +66,9 @@ class MainContain extends React.Component {
             <div>
                 <Container style={{ marginTop: '6em' }}>
                     <Item.Group divided>
+                        <Item>
+                            <Item.Header as="h2">Songs List</Item.Header>
+                        </Item>
                         {this.props.songs.length > 0 ? renderedPlaylist : renderPlaceHolder}
                         {/* {renderPlaceHolder} */}
                     </Item.Group>
