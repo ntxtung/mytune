@@ -1,8 +1,9 @@
 import React from 'react'
-import { Container, Item, Button, ButtonGroup } from 'semantic-ui-react'
+import { Container, Item, Button, ButtonGroup, Dimmer } from 'semantic-ui-react'
 
 import {connect} from 'react-redux'
 import {selectSong} from '../actions'
+
 
 class MainContain extends React.Component {
     constructor(props){
@@ -13,10 +14,11 @@ class MainContain extends React.Component {
     }
 
     render() {
-        const renderedPlaylist = this.props.songs.map((song) => {     
+        const renderedPlaylist = this.props.songs.map((song) => {   
+            console.log(song)  
             return (
-                <Item key={song.id}>
-                    <Item.Image size="tiny" src={song.img} />
+                <Item key={song._id}>
+                    <Item.Image wrapped size="tiny" src={song.image === null ? 'https://www.upsieutoc.com/images/2019/05/31/defaultImg.png' : song.image} />
                     <Item.Content>
                         <Item.Header>
                             {song.title}

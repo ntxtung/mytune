@@ -16,7 +16,7 @@ export default class SongDetail extends Component {
                 <Grid stackable>
                     <Grid.Row stretched>
                         <Grid.Column width={2} style={{ padding: 0 }}>
-                            <Image src={this.props.currentSong.img}
+                            <Image src={this.props.currentSong.image === null ? 'https://www.upsieutoc.com/images/2019/05/31/defaultImg.png' : this.props.currentSong.image}
                                 style={{
                                     width: 'auto',
                                     height: 'auto',

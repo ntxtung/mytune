@@ -124,7 +124,7 @@ class BotNavigation extends Component {
             return (
                 <div>                
                     <Sound
-                        url={this.props.selectedSong.url}
+                        url={'http://'+this.props.selectedSong.url}
                         playStatus={this.state.playStatus}
                         onLoading={({ bytesLoaded, bytesTotal, duration }) => {
                             this.setState({

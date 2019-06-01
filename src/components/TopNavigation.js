@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Menu, Container, Image, Button, Item, Icon, Dropdown, Search } from 'semantic-ui-react'
+import { Menu, Container, Image, Button, Item, Icon, Dropdown, Search, Modal } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 import { connect } from 'react-redux'
 import { } from '../actions'
+
+import LoginForm from './LoginForm'
+import SignUpForm from './SignUpForm'
 
 class TopNavigation extends Component {
     state = {}
@@ -11,12 +14,20 @@ class TopNavigation extends Component {
     guestDiv = () => {
         return (
             <div>
-                <Button as='a' inverted={true}>
-                    Log in
-                </Button>
-                <Button as='a' inverted={true} style={{ marginLeft: '0.5em' }}>
-                    Sign Up
-                </Button>
+                <Modal size="tiny" trigger={<Button as='a' color="orange" inverted={true}>Log In</Button>}>
+                    <Modal.Header style={{ textAlign:"center" }}>Please Login to use our features</Modal.Header>
+                    <Modal.Description>
+                        <LoginForm />
+                    </Modal.Description>
+                </Modal>
+                
+                <Modal size="tiny" trigger={<Button as='a' inverted={true} style={{ marginLeft: '0.5em' }}>Sign Up</Button>}>
+                    <Modal.Header style={{ textAlign:"center" }}>Member Registration</Modal.Header>
+                    <Modal.Description>
+                        <SignUpForm />
+                    </Modal.Description>
+                </Modal>
+                
             </div>
         )
     }
@@ -34,6 +45,12 @@ class TopNavigation extends Component {
                     <Dropdown item icon='dropdown' simple>
                         <Dropdown.Menu>
                             <Dropdown.Item>Account</Dropdown.Item>
+                            <Modal size="tiny" trigger={<Dropdown.Item>Upload</Dropdown.Item>}>
+                                <Modal.Header style={{ textAlign:"center" }}>Member Registration</Modal.Header>
+                                <Modal.Description>
+                                    <SignUpForm />
+                                </Modal.Description>
+                            </Modal>
                             <Dropdown.Item>Sign out</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -52,9 +69,9 @@ class TopNavigation extends Component {
                             <Image size='mini' src={process.env.PUBLIC_URL + '/image/256.png'} style={{ marginRight: '1.5em' }} />
                             My Tune
                         </Menu.Item>
-                        <Menu.Item > 
-                            <Search />
-                        </Menu.Item>
+                        <Menu.Item>
+                            <Search placeholder="Search"/>
+                        </Menu.Item>                        
                         <Menu.Item position='right'>
                             {this.props.user ? this.userDiv() : this.guestDiv()}
                         </Menu.Item>
