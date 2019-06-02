@@ -50,7 +50,7 @@ class MainContain extends React.Component {
                                         // song.isLoved = !song.isLoved
                                     }}
                                 />
-                                <Button icon="play"
+                                <Button icon="add"
                                     onClick={() => {
                                         this.props.selectSong(song)
                                     }}
@@ -64,7 +64,7 @@ class MainContain extends React.Component {
 
         return (
             <div>
-                <Container style={{ marginTop: '6em' }}>
+                <Container style={{ paddingTop: '6em', paddingBottom: '6em' }}>
                     <Item.Group divided>
                         <Item>
                             <Item.Header as="h2">Songs List</Item.Header>

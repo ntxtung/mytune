@@ -111,7 +111,7 @@ class BotNavigation extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         // console.log("Position / Duration: " , this.state.position, this.state.duration)
-        if (this.state.position > this.state.duration - 200 && this.state.playStatus === Sound.status.PLAYING) {
+        if (this.state.duration > 205 && this.state.position > this.state.duration - 200 && this.state.playStatus === Sound.status.PLAYING) {
             this.onFinishedPlaying()
         }
         if (prevProps.selectedSong !== this.props.selectedSong){
@@ -160,8 +160,8 @@ class BotNavigation extends Component {
                         onError={(errorCode, description) => {
                             this.pauseSong()
                             console.log(">> Errorrrr")
-                            console.log("Error Code: " + errorCode)
-                            console.log("Description: " + description)
+                            console.log(">> Error Code: " + errorCode)
+                            console.log(">> Description: " + description)
                         }}
                         autoLoad={this.state.autoLoad}
                         loop={this.state.loop}

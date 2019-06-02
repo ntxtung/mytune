@@ -14,14 +14,14 @@ class TopNavigation extends Component {
     guestDiv = () => {
         return (
             <div>
-                <Modal size="tiny" trigger={<Button as='a' color="orange" inverted={true}>Log In</Button>}>
+                <Modal dimmer="blurring" size="tiny" trigger={<Button as='a' color="orange" inverted={true}>Log In</Button>}>
                     <Modal.Header style={{ textAlign:"center" }}>Please Login to use our features</Modal.Header>
                     <Modal.Description>
                         <LoginForm />
                     </Modal.Description>
                 </Modal>
                 
-                <Modal size="tiny" trigger={<Button as='a' inverted={true} style={{ marginLeft: '0.5em' }}>Sign Up</Button>}>
+                <Modal dimmer="blurring" size="tiny" trigger={<Button as='a' inverted={true} style={{ marginLeft: '0.5em' }}>Sign Up</Button>}>
                     <Modal.Header style={{ textAlign:"center" }}>Member Registration</Modal.Header>
                     <Modal.Description>
                         <SignUpForm />
