@@ -7,6 +7,7 @@ import { } from '../actions'
 
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
+import UploadForm from './UploadForm'
 
 class TopNavigation extends Component {
     state = {}
@@ -27,7 +28,13 @@ class TopNavigation extends Component {
                         <SignUpForm />
                     </Modal.Description>
                 </Modal>
-                
+
+                <Modal dimmer="blurring" size="tiny" trigger={<Button as='a' primary inverted={true} style={{ marginLeft: '0.5em' }}>Upload</Button>}>
+                    <Modal.Header style={{ textAlign:"center" }}>Choose a file</Modal.Header>
+                    <Modal.Description>
+                        <UploadForm />
+                    </Modal.Description>
+                </Modal>                
             </div>
         )
     }
