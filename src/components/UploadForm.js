@@ -61,7 +61,7 @@ class UploadForm extends Component {
                 <Form onSubmit={this.onFormSubmit}>
                     <Input  fluid type="file" name="file" id="file" onChange={this.onChange} disabled={this.state.status === 'uploading' ? true : false}/>
                     {uploadprogress}
-                    <Button fluid size="large" primary content="Upload Song" type="submit" disabled={this.state.status === 'uploading' ? true : false}/>
+                    <Button fluid size="large" primary content="Upload Song" type="submit" disabled={this.state.status === 'uploading' || this.state.file === null ? true : false}/>
                 </Form>
             </div>
         )
